@@ -22,38 +22,45 @@
     <title>High Scores</title>
   </head>
   <header>
-    !-- Header -->
+    <!-- Header -->
     <div class="container">
       <div class="row justify-content: center">
         <div class="col-12">
-        <h1 id="highScores">High Scores</h1>
-      </div>
+          <h1 id="highScores">Game Over!</h1>
+        </div>
       </div>
     </div>
   </header>
   <body>
     <!-- Body -->
-    <div class="container text-center" id="containerTwo">
+    <div class="container text-center">
       <div class="row justify-content: center;">
         <div class="col-12">
-          <ol id="scorelist">
-            <h4>Top Three Players</h4>
-            <li>Kakarot: 9001 PTS</li>
-            <li>大野 晶, Ōno Akira: 200 PTS</li>
-            <li>MADMAX: 85 PTS</li>
-           
-          </ol>
-          <button type="button" id="button" class="btn btn-lg" onclick="window.location.href = 'index.html'">
+          <div class="top3">
+            <p>Kakarot: 9001 PTS</p>
+            <p>大野 晶, Ōno Akira: 200 PTS</p>
+            <p>MADMAX: 85 PTS</p>
+            <div class="scorelist"></div>
+            <p>Your Final Score is:</p>
+          </div>
+          <div>
+            <input type="name" id="name" placeholder="Name Please"/>
+            <button id="submit">Submit</button>
+            <button id="clear">Clear</button>
+          </div>
+         
+          <button
+            type="button"
+            id="button"
+            class="btn btn-lg"
+            onclick="window.location.href = 'index.html'"
+          >
             <h4>Back to Main Page</h4>
           </button>
         </div>
       </div>
     </div>
 
-
-
-
- 
     <!-- Footer -->
     <footer class="footer">
       <div class="two-toned-footer-color"></div>
@@ -62,7 +69,6 @@
       </p>
     </footer>
 
-    <script src="./script.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -78,5 +84,6 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+    <script src="./high-scores.js"></script>
   </body>
 </html>
