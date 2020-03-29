@@ -1,74 +1,51 @@
-//Grabing the DOM 
 var startQuiz = document.querySelector(".startquiz");
 var timer = document.getElementById("timer");
 var displayQuiz = document.querySelector(".quiz");
 var answerResult = document.querySelector(".result");
-
-
+//Buttions for Quiz One  
 var quizButton1 = document.createElement('button');
 var quizButton2 = document.createElement('button');
 var quizButton3 = document.createElement('button');
 var quizButton4 = document.createElement('button');
 
+quizButton1.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: flex; flex-direction: column; text-align: center;");
+quizButton2.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: flex; flex-direction: column; text-align: center;");
+quizButton3.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: flex; flex-direction: column; text-align: center;");
+quizButton4.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: flex; flex-direction: column; text-align: center;");
 
-var quizButton5 = document.createElement('button');
-var quizButton6 = document.createElement('button');
-var quizButton7 = document.createElement('button');
-var quizButton8 = document.createElement('button');
-//Question 1
-quizButton1.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-quizButton2.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-quizButton3.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-quizButton4.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-// //Question 2
-quizButton5.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-quizButton6.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-quizButton7.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-quizButton8.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-// //Question 3
-// quizButton3_1.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-// quizButton3_2.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-// quizButton3_3.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-// quizButton3_4.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-// //Question 4 
-// quizButton4_1.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-// quizButton4_2.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-// quizButton4_3.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-// quizButton4_4.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-// //Question 5
-// quizButton5_1.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-// quizButton5_2.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-// quizButton5_3.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
-// quizButton5_4.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
 
-(function quizBackground () {
-    displayQuiz.style.background = "#9bbc0f";
-    displayQuiz.style.height = "300px";
-    document.body.style.backgroundColor = "gray";
-});
 
-var timeLeft = 3;
-//Event listener to begin the quiz
+var timeLeft = 60;
+
+//Statrting the quiz 
 startQuiz.addEventListener("click", function () {
     displayQuiz.style.background = "#9bbc0f";
-    displayQuiz.style.height = "300px";
+    displayQuiz.style.height = "400px";
     document.body.style.backgroundColor = "gray";
 
     var removeJumbotron = document.querySelector(".jumbotron");
     removeJumbotron.parentNode.removeChild(removeJumbotron);
     startQuiz.parentNode.removeChild(startQuiz);
 
-    // var timeInterval = setInterval(function () {
-    //     timeLeft--;
-    //     timer.textContent = "Timer: " + timeLeft;
-    //     if (timeLeft === 0) {
-    //         clearInterval(timeInterval);
-    //         document.location.href = 'high-scores.html';
-    //     }
-    // }, 1000);
+    var timeInterval = setInterval(function () {
+        timeLeft--;
+        timer.textContent = "Timer: " + timeLeft;
+        if (timeLeft === 0) {
+            clearInterval(timeInterval);
+            document.location.href = 'high-scores.html';
+        }
+    }, 1000);
     questionOne();
 });
-
+//Storing Time/Score 
+function storingScore() {
+    localStorage.setItem("User's score", timeLeft)
+}
+//Adding time for correct Answers 
+function updateTimer() {
+    timeLeft += timeLeft + 10;
+    timer.textContent = "Timer: " + timeLeft;
+}
 //Questions for user 
 const userQuestions = [{
     question: "What was the first publicly released video game console ever made?",
@@ -76,7 +53,7 @@ const userQuestions = [{
     b: "Magnavox Odyssey",
     c: "Nintendo Entertainment System",
     d: "Atari Pong",
-    correctAnswer: "d"
+    
 },
 {
     question: "What does Sega stand for?",
@@ -84,7 +61,7 @@ const userQuestions = [{
     b: "Service Games",
     c: "Super Entertainment Gaming Action",
     d: "Special Entertainment Games Association",
-    correctAnswer: "b"
+    
 
 },
 {
@@ -93,15 +70,15 @@ const userQuestions = [{
     b: "Super Nintendo",
     c: "Sega Genesis",
     d: "Xbox",
-    correctAnswer: "a"
+    
 },
 {
     question: "Who is Mario's brother?",
     a: "Green Mario",
-    b: "Gotta go fast",
+    b: "\"Gotta go fast\"",
     c: 'Goose from the video game titled "Untiled Goose Game"',
     d: "Luigi",
-    correctAnswer: "d"
+   
 },
 {
     question: "Who is the main protagonist in the The Legend of Zelda?",
@@ -109,13 +86,14 @@ const userQuestions = [{
     b: "Zelda",
     c: "Aegon Targaryen",
     d: "Link",
-    correctAnswer: "d"
+   
 }
 ];
+//Question One
 function questionOne() {
     var displayp = document.createElement("p");
     displayp = displayQuiz;
-    displayQuiz.innerHTML = userQuestions[0].question 
+    displayQuiz.innerHTML = userQuestions[0].question
 
     quizButton1.innerHTML = userQuestions[0].a;
     displayQuiz.appendChild(quizButton1);
@@ -131,130 +109,260 @@ function questionOne() {
 
     quizButton1.addEventListener("click", function () {
         var displayh1 = document.createElement("h1");
-        displayh1.textContent = "InCorrect"; 
+        displayh1.textContent = "InCorrect";
         answerResult.appendChild(displayh1);
         displayh1.setAttribute("style", "marginLeft: 5000px;");
-        questionTwo(); 
+        questionTwo();
     });
     quizButton2.addEventListener("click", function () {
         var displayh1 = document.createElement("h1");
-        displayh1.textContent = "Incorrect"; 
+        displayh1.textContent = "Incorrect";
         answerResult.appendChild(displayh1);
-        questionTwo(); 
+        questionTwo();
     });
     quizButton3.addEventListener("click", function () {
         var displayh1 = document.createElement("h1");
-        displayh1.textContent = "Nope, Sorry"; 
+        displayh1.textContent = "Incorrect";
         answerResult.appendChild(displayh1);
-        questionTwo(); 
+        questionTwo();
     });
     quizButton4.addEventListener("click", function () {
         var displayh1 = document.createElement("h1");
-        displayh1.textContent = "Correct!"; 
+        displayh1.textContent = "Correct!";
         answerResult.appendChild(displayh1);
-        questionTwo(); 
-    //    (function subtractTime() {
-    //     timeLeft += timeLeft + 10; 
-    //    }); 
+        questionTwo();
+        updateTimer();
+
     });
-    // answerResult.removeChild(answerResult);
 }
- 
-
-
 //Question Two 
+var quizButton5 = document.createElement('button');
+var quizButton6 = document.createElement('button');
+var quizButton7 = document.createElement('button');
+var quizButton8 = document.createElement('button');
+
+quizButton5.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+quizButton6.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+quizButton7.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+quizButton8.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+
+
 function questionTwo() {
     // answerResult.removeChild(answerResult);
 
     var displayp = document.createElement("p");
     displayp = displayQuiz;
-    displayQuiz.innerHTML = userQuestions[1].question 
+    displayQuiz.innerHTML = userQuestions[1].question
 
-    quizButton1.innerHTML = userQuestions[1].a;
-    displayQuiz.appendChild(quizButton1);
+    quizButton5.innerHTML = userQuestions[1].a;
+    displayQuiz.appendChild(quizButton5);
 
-    quizButton2.innerHTML = userQuestions[1].b;
-    displayQuiz.appendChild(quizButton2);
+    quizButton6.innerHTML = userQuestions[1].b;
+    displayQuiz.appendChild(quizButton6);
 
-    quizButton3.innerHTML = userQuestions[1].c;
-    displayQuiz.appendChild(quizButton3);
+    quizButton7.innerHTML = userQuestions[1].c;
+    displayQuiz.appendChild(quizButton7);
 
-    quizButton4.innerHTML = userQuestions[1].d;
-    displayQuiz.appendChild(quizButton4);
-    
+    quizButton8.innerHTML = userQuestions[1].d;
+    displayQuiz.appendChild(quizButton8);
+
+    quizButton5.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Incorrect";
+        answerResult.appendChild(displayh1);
+        questionThree();
+    });
+    quizButton6.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Correct";
+        answerResult.appendChild(displayh1);
+        questionThree();
+        updateTimer();
+    });
+    quizButton7.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Incorrect";
+        answerResult.appendChild(displayh1);
+        questionThree();
+    });
+    quizButton8.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Incorrect";
+        answerResult.appendChild(displayh1);
+        questionThree(); 
+        answerResult.remove(answerResult);
+       
+    });
+
 }
-quizButton5.addEventListener("click", function () {
-    var displayh1 = document.createElement("h1");
-    displayh1.textContent = "Incorrect"; 
-    answerResult.appendChild(displayh1);
-    questionThree(); 
-});
-quizButton6.addEventListener("click", function () {
-    var displayh1 = document.createElement("h1");
-    displayh1.textContent = "Correct"; 
-    answerResult.appendChild(displayh1);
-    questionThree(); 
-});
-quizButton7.addEventListener("click", function () {
-    var displayh1 = document.createElement("h1");
-    displayh1.textContent = "Incorrect"; 
-    answerResult.appendChild(displayh1);
-    questionThree(); 
-});
-quizButton8.addEventListener("click", function () {
-    var displayh1 = document.createElement("h1");
-    displayh1.textContent = "Incorrect"; 
-    answerResult.appendChild(displayh1);
-    questionThree(); 
-//    (function subtractTime() {
-//     timeLeft += timeLeft + 1; 
-   
-//    }); 
-});
-answerResult.removeChild(answerResult);
-//Question Three 
+//Question Three
+var quizButton9 = document.createElement('button');
+var quizButton10 = document.createElement('button');
+var quizButton11 = document.createElement('button');
+var quizButton12 = document.createElement('button');
+
+quizButton9.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+quizButton10.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+quizButton11.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+quizButton12.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+
 
 function questionThree() {
-    // answerResult.removeChild(answerResult);
-
     var displayp = document.createElement("p");
     displayp = displayQuiz;
-    displayQuiz.innerHTML = userQuestions[2].question 
+    displayQuiz.innerHTML = userQuestions[2].question
 
-    quizButton1.innerHTML = userQuestions[2].a;
-    displayQuiz.appendChild(quizButton1);
+    quizButton9.innerHTML = userQuestions[2].a;
+    displayQuiz.appendChild(quizButton9);
 
-    quizButton2.innerHTML = userQuestions[2].b;
-    displayQuiz.appendChild(quizButton2);
+    quizButton10.innerHTML = userQuestions[2].b;
+    displayQuiz.appendChild(quizButton10);
 
-    quizButton3.innerHTML = userQuestions[2].c;
-    displayQuiz.appendChild(quizButton3);
+    quizButton11.innerHTML = userQuestions[2].c;
+    displayQuiz.appendChild(quizButton11);
 
-    quizButton4.innerHTML = userQuestions[2].d;
-    displayQuiz.appendChild(quizButton4);
-    
+    quizButton12.innerHTML = userQuestions[2].d;
+    displayQuiz.appendChild(quizButton12);
+
+    quizButton9.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Correct";
+        answerResult.appendChild(displayh1);
+        questionFour();
+        updateTimer();
+    });
+    quizButton10.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Incorrect";
+        answerResult.appendChild(displayh1);
+        questionFour();
+    });
+    quizButton11.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Incorrect";
+        answerResult.appendChild(displayh1);
+        questionFour();
+    });
+    quizButton12.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Incorrect";
+        answerResult.appendChild(displayh1);
+        questionFour();
+    });
 }
-quizButton9.addEventListener("click", function () {
-    var displayh1 = document.createElement("h1");
-    displayh1.textContent = "Incorrect"; 
-    answerResult.appendChild(displayh1);
-});
-quizButton10.addEventListener("click", function () {
-    var displayh1 = document.createElement("h1");
-    displayh1.textContent = "Correct"; 
-    answerResult.appendChild(displayh1);
-});
-quizButton11.addEventListener("click", function () {
-    var displayh1 = document.createElement("h1");
-    displayh1.textContent = "Incorrect"; 
-    answerResult.appendChild(displayh1);
-});
-quizButton12.addEventListener("click", function () {
-    var displayh1 = document.createElement("h1");
-    displayh1.textContent = "Incorrect"; 
-    answerResult.appendChild(displayh1);
-//    (function subtractTime() {
-//     timeLeft += timeLeft + 1; 
-   
-//    }); 
-});
+
+//Question Four
+var quizButton13 = document.createElement('button');
+var quizButton14 = document.createElement('button');
+var quizButton15 = document.createElement('button');
+var quizButton16 = document.createElement('button');
+
+quizButton13.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+quizButton14.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+quizButton15.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+quizButton16.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+
+function questionFour() {
+    var displayp = document.createElement("p");
+    displayp = displayQuiz;
+    displayQuiz.innerHTML = userQuestions[3].question
+
+    quizButton13.innerHTML = userQuestions[3].a;
+    displayQuiz.appendChild(quizButton13);
+
+    quizButton14.innerHTML = userQuestions[3].b;
+    displayQuiz.appendChild(quizButton14);
+
+    quizButton15.innerHTML = userQuestions[3].c;
+    displayQuiz.appendChild(quizButton15);
+
+    quizButton16.innerHTML = userQuestions[3].d;
+    displayQuiz.appendChild(quizButton16);
+
+    quizButton13.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Incorrect";
+        answerResult.appendChild(displayh1);
+        questionFive();
+    });
+    quizButton14.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Incorrect";
+        answerResult.appendChild(displayh1);
+        questionFive();
+    });
+    quizButton15.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Incorrect";
+        answerResult.appendChild(displayh1);
+        questionFive();
+    });
+    quizButton16.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Correct";
+        answerResult.appendChild(displayh1);
+        questionFive();
+        updateTimer();
+    });
+}
+
+//Question FIve
+var quizButton17 = document.createElement('button');
+var quizButton18 = document.createElement('button');
+var quizButton19 = document.createElement('button');
+var quizButton20 = document.createElement('button');
+
+quizButton17.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+quizButton18.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+quizButton19.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+quizButton20.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: grid;");
+
+function questionFive() {
+    var displayp = document.createElement("p");
+    displayp = displayQuiz;
+    displayQuiz.innerHTML = userQuestions[4].question
+
+    quizButton17.innerHTML = userQuestions[4].a;
+    displayQuiz.appendChild(quizButton17);
+
+    quizButton18.innerHTML = userQuestions[4].b;
+    displayQuiz.appendChild(quizButton18);
+
+    quizButton19.innerHTML = userQuestions[4].c;
+    displayQuiz.appendChild(quizButton19);
+
+    quizButton20.innerHTML = userQuestions[4].d;
+    displayQuiz.appendChild(quizButton20);
+
+    quizButton17.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Incorrect";
+        answerResult.appendChild(displayh1);
+        storingScore();
+        document.location.href = 'high-scores.html';
+    });
+    quizButton18.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Incorrect";
+        answerResult.appendChild(displayh1);
+        storingScore();
+        document.location.href = 'high-scores.html';
+    });
+    quizButton19.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Incorrect";
+        answerResult.appendChild(displayh1);
+        storingScore();
+        document.location.href = 'high-scores.html';
+    });
+    quizButton20.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Correct";
+        answerResult.appendChild(displayh1);
+        updateTimer();
+        storingScore();
+        document.location.href = 'high-scores.html';
+
+    });
+}
+
