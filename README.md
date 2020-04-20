@@ -17,7 +17,7 @@
 - HTML 
 - CSS 
 - JavaScript 
-- Jquery 
+- JQuery 
 
 ## Acknowledgments :clinking_glasses:
 - Nintendo
