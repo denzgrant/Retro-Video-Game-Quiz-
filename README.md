@@ -8,7 +8,7 @@
 - JavaScript 
 - Jquery 
 
-## Acknowledgments :clinking_glasse
+## Acknowledgments :clinking_glasse:
 - Nintendo
 - SEGA
 - Senorgif.com for creating an amazing gif. 
