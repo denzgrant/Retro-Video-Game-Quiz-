@@ -19,7 +19,7 @@
 - JavaScript 
 - Jquery 
 
-## Acknowledgments :clinking_glasse:
+## Acknowledgments :clinking_glasses:
 - Nintendo
 - SEGA
 - Senorgif.com for creating an amazing gif. 
