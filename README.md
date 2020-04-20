@@ -1,10 +1,14 @@
-Retro Video Game Quiz 
+# Retro Video Game Quiz :joystick:
+- U of Arizona Coding Bootcamp Assignment
+- A video game quiz containing questions related to retro gaming. User is free to upload score after end of quiz. 
 
-A video game quiz I made with vanilla JavaScipt, CSS, and HTML. Used bootstrap to layout the page. This was a homework assignemnt for the University of Arizona bootcamp. User is free to upload score after end of quiz. 
+## Languages Used :books:
+- HTML 
+- CSS 
+- JavaScript 
+- Jquery 
 
-Authors:
-Denzell Grant
-
-
-Acknowledgments: 
-Senorgif.com for creating an amazing gif. 
+## Acknowledgments :clinking_glasse
+- Nintendo
+- SEGA
+- Senorgif.com for creating an amazing gif. 
