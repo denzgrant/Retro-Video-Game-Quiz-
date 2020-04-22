@@ -27,15 +27,16 @@ startQuiz.addEventListener("click", function () {
     removeJumbotron.parentNode.removeChild(removeJumbotron);
     startQuiz.parentNode.removeChild(startQuiz);
 
-    var timeInterval = setInterval(function () {
-        timeLeft--;
-        timer.textContent = "Timer: " + timeLeft;
-        if (timeLeft === 0) {
-            clearInterval(timeInterval);
-            document.location.href = 'high-scores.html';
-        }
-    }, 1000);
-    questionOne();
+    // var timeInterval = setInterval(function () {
+    //     timeLeft--;
+    //     timer.textContent = "Timer: " + timeLeft;
+    //     if (timeLeft === 0) {
+    //         clearInterval(timeInterval);
+    //         document.location.href = 'high-scores.html';
+    //     }
+
+    // }, 1000);
+    quizQs(userQuestions[0]); 
 });
 //Storing Time/Score 
 function storingScore() {
@@ -53,7 +54,6 @@ const userQuestions = [{
     b: "Magnavox Odyssey",
     c: "Nintendo Entertainment System",
     d: "Atari Pong",
-    
 },
 {
     question: "What does Sega stand for?",
@@ -61,8 +61,6 @@ const userQuestions = [{
     b: "Service Games",
     c: "Super Entertainment Gaming Action",
     d: "Special Entertainment Games Association",
-    
-
 },
 {
     question: "What was one of the first game systems that actually enabled an internet connection?",
@@ -70,7 +68,6 @@ const userQuestions = [{
     b: "Super Nintendo",
     c: "Sega Genesis",
     d: "Xbox",
-    
 },
 {
     question: "Who is Mario's brother?",
@@ -78,7 +75,6 @@ const userQuestions = [{
     b: "\"Gotta go fast\"",
     c: 'Goose from the video game titled "Untiled Goose Game"',
     d: "Luigi",
-   
 },
 {
     question: "Who is the main protagonist in the The Legend of Zelda?",
@@ -86,55 +82,50 @@ const userQuestions = [{
     b: "Zelda",
     c: "Aegon Targaryen",
     d: "Link",
-   
 }
 ];
 //Question One
-function questionOne() {
-    var displayp = document.createElement("p");
-    displayp = displayQuiz;
-    displayQuiz.innerHTML = userQuestions[0].question
-
-    quizButton1.innerHTML = userQuestions[0].a;
-    displayQuiz.appendChild(quizButton1);
-
-    quizButton2.innerHTML = userQuestions[0].b;
-    displayQuiz.appendChild(quizButton2);
-
-    quizButton3.innerHTML = userQuestions[0].c;
-    displayQuiz.appendChild(quizButton3);
-
-    quizButton4.innerHTML = userQuestions[0].d;
-    displayQuiz.appendChild(quizButton4);
-
-    quizButton1.addEventListener("click", function () {
-        var displayh1 = document.createElement("h1");
-        displayh1.textContent = "InCorrect";
-        answerResult.appendChild(displayh1);
-        displayh1.setAttribute("style", "marginLeft: 5000px;");
-        questionTwo();
-    });
-    quizButton2.addEventListener("click", function () {
-        var displayh1 = document.createElement("h1");
-        displayh1.textContent = "Incorrect";
-        answerResult.appendChild(displayh1);
-        questionTwo();
-    });
-    quizButton3.addEventListener("click", function () {
-        var displayh1 = document.createElement("h1");
-        displayh1.textContent = "Incorrect";
-        answerResult.appendChild(displayh1);
-        questionTwo();
-    });
-    quizButton4.addEventListener("click", function () {
-        var displayh1 = document.createElement("h1");
-        displayh1.textContent = "Correct!";
-        answerResult.appendChild(displayh1);
-        questionTwo();
-        updateTimer();
-
-    });
+function quizQs(userQues) {
+    let ques = `<div class="quiz">
+    ${userQues.question}
+    <button id="qzbutton">
+    ${userQues.a}</button>
+    <button id="qzbutton" id="qzbutton">
+    ${userQues.b}</button>
+    <button id="qzbutton">
+    ${userQues.c}</button>
+    <button id="qzbutton">
+    ${userQues.d}</button></div>`;
+    displayQuiz.innerHTML = ques; 
 }
+
+// quizButton1.addEventListener("click", function () {
+//     var displayh1 = document.createElement("h1");
+//     displayh1.textContent = "InCorrect";
+//     answerResult.appendChild(displayh1);
+//     displayh1.setAttribute("style", "marginLeft: 5000px;");
+//     questionTwo();
+// });
+// quizButton2.addEventListener("click", function () {
+//     var displayh1 = document.createElement("h1");
+//     displayh1.textContent = "Incorrect";
+//     answerResult.appendChild(displayh1);
+//     questionTwo();
+// });
+// quizButton3.addEventListener("click", function () {
+//     var displayh1 = document.createElement("h1");
+//     displayh1.textContent = "Incorrect";
+//     answerResult.appendChild(displayh1);
+//     questionTwo();
+// });
+// quizButton4.addEventListener("click", function () {
+//     var displayh1 = document.createElement("h1");
+//     displayh1.textContent = "Correct!";
+//     answerResult.appendChild(displayh1);
+//     questionTwo();
+//     updateTimer();
+
+// });
 //Question Two 
 var quizButton5 = document.createElement('button');
 var quizButton6 = document.createElement('button');
@@ -189,9 +180,9 @@ function questionTwo() {
         var displayh1 = document.createElement("h1");
         displayh1.textContent = "Incorrect";
         answerResult.appendChild(displayh1);
-        questionThree(); 
+        questionThree();
         answerResult.remove(answerResult);
-       
+
     });
 
 }
@@ -365,4 +356,3 @@ function questionFive() {
 
     });
 }
-
