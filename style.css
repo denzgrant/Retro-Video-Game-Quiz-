@@ -1,20 +1,43 @@
-body{
-  background:black;
+body {
+  background: black;
 }
 /* Jumbotron GIF */
-.jumbotron{
-  background: url("https://media.giphy.com/media/wdfmcVxKQNqso/giphy.gif") no-repeat center center; 
+.jumbotron {
+  background: url("https://media.giphy.com/media/wdfmcVxKQNqso/giphy.gif")
+    no-repeat center center;
   -webkit-background-size: 100% 100%;
   -moz-background-size: 100% 100%;
   -o-background-size: 100% 100%;
   background-size: 100% 100%;
-  color:#4f43ae;
-  font-family: 'Press Start 2P', cursive;
+  color: #4f43ae;
+  font-family: "Press Start 2P", cursive;
   border-style: solid;
   margin-top: 1em;
 }
-h1, h2, h4, p, button {
-  font-family: 'Press Start 2P', cursive;
+#cross {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(
+      to bottom,
+      transparent 35%,
+      #d00 35%,
+      #d00 65%,
+      transparent 65%
+    ),
+    linear-gradient(
+      to right,
+      transparent 35%,
+      #d00 35%,
+      #d00 65%,
+      transparent 65%
+    );
+}
+h1,
+h2,
+h4,
+p,
+button {
+  font-family: "Press Start 2P", cursive;
 }
 /* Buttons to start quiz or to view highscores */
 #stbutton {
@@ -31,19 +54,21 @@ h1, h2, h4, p, button {
   margin-top: 10px;
 }
 #qzbutton {
-  color:white; 
-  background: #8B008B; 
-  padding: 5px; 
-  margin: 15px; 
-  display: flex; 
-  flex-direction: column; 
-  text-align: center; 
+  color: white;
+  background: #8b008b;
+  padding: 5px;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
-#start-button:hover {background-color: 	#4f43ae;}
+#start-button:hover {
+  background-color: #4f43ae;
+}
 
 #start-button:active {
-  background-color:	#4f43ae;
+  background-color: #4f43ae;
   box-shadow: 0 5px #cec9cc;
   transform: translateY(4px);
 }
@@ -60,15 +85,16 @@ h1, h2, h4, p, button {
 /* High Score Page */
 #highScores {
   color: red;
-  text-align: center; 
+  text-align: center;
   font-size: 5em;
 }
-.scorelist, .top-players {
-  color: white; 
+.scorelist,
+.top-players {
+  color: white;
 }
 .timer {
   text-align: right;
-  color: red; 
+  color: red;
 }
 #submit {
   color: green;
