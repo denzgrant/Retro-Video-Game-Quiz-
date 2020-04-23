@@ -2,18 +2,6 @@ var startQuiz = document.querySelector(".startquiz");
 var timer = document.getElementById("timer");
 var displayQuiz = document.querySelector(".quiz");
 var answerResult = document.querySelector(".result");
-//Buttions for Quiz One  
-var quizButton1 = document.createElement('button');
-var quizButton2 = document.createElement('button');
-var quizButton3 = document.createElement('button');
-var quizButton4 = document.createElement('button');
-
-quizButton1.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: flex; flex-direction: column; text-align: center;");
-quizButton2.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: flex; flex-direction: column; text-align: center;");
-quizButton3.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: flex; flex-direction: column; text-align: center;");
-quizButton4.setAttribute("style", "color:white; background: #8B008B; padding: 5px; margin: 15px; display: flex; flex-direction: column; text-align: center;");
-
-
 
 var timeLeft = 60;
 
@@ -22,6 +10,7 @@ startQuiz.addEventListener("click", function () {
     displayQuiz.style.background = "#9bbc0f";
     displayQuiz.style.height = "400px";
     document.body.style.backgroundColor = "gray";
+    // <div id="cross"></div>
 
     var removeJumbotron = document.querySelector(".jumbotron");
     removeJumbotron.parentNode.removeChild(removeJumbotron);
@@ -36,7 +25,8 @@ startQuiz.addEventListener("click", function () {
     //     }
 
     // }, 1000);
-    quizQs(userQuestions[0]); 
+    quizQs(userQuestions[0], userQuestions[0].d);
+
 });
 //Storing Time/Score 
 function storingScore() {
@@ -85,19 +75,29 @@ const userQuestions = [{
 }
 ];
 //Question One
-function quizQs(userQues) {
+function quizQs(userQues, answer) {
     let ques = `<div class="quiz">
-    ${userQues.question}
+    <p>${userQues.question}</p>
     <button id="qzbutton">
     ${userQues.a}</button>
-    <button id="qzbutton" id="qzbutton">
+    <button id="qzbutton">
     ${userQues.b}</button>
     <button id="qzbutton">
     ${userQues.c}</button>
-    <button id="qzbutton">
-    ${userQues.d}</button></div>`;
-    displayQuiz.innerHTML = ques; 
+    <button id="qzbutton" class="${userQues.d}">
+    ${userQues.d}</button></div>`
+    console.log(answer);
+    displayQuiz.innerHTML = ques;
+
+    qzbutton.addEventListener("click", function () {
+        var displayh1 = document.createElement("h1");
+        displayh1.textContent = "Incorrect";
+        answerResult.appendChild(displayh1);
+        questionThree();
+    });
 }
+
+
 
 // quizButton1.addEventListener("click", function () {
 //     var displayh1 = document.createElement("h1");
