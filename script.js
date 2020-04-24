@@ -91,14 +91,14 @@ function quizQs(userQues, answer, ) {
     console.log(answer);
     displayQuiz.innerHTML = ques;
 
-    // function selection() {
-    //     let quesButton = document.querySelector('#qzbutton1');
-    //     quesButton.addEventListener("click", function () {
-    //         alert("Test");
+    //use a function 
+        let quesButton = document.querySelector('#qzbutton1');
+        quesButton.addEventListener("click", function () {
+            alert("Test");
 
-    //     });
+        });
 
-    // }
+    
 }
 
 
