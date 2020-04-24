@@ -25,9 +25,11 @@ startQuiz.addEventListener("click", function () {
     //     }
 
     // }, 1000);
-    quizQs(userQuestions[0], userQuestions[0].d);
+
+    quizQs(userQuestions[0], userQuestions[0].d)
 
 });
+
 //Storing Time/Score 
 function storingScore() {
     localStorage.setItem("User's score", timeLeft)
@@ -75,28 +77,29 @@ const userQuestions = [{
 }
 ];
 //Question One
-function quizQs(userQues, answer) {
+function quizQs(userQues, answer, ) {
     let ques = `<div class="quiz">
     <p>${userQues.question}</p>
-    <button id="qzbutton">
+    <button id="qzbutton1" class="qzbutton">
     ${userQues.a}</button>
-    <button id="qzbutton">
+    <button id="qzbutton2" class="qzbutton">
     ${userQues.b}</button>
-    <button id="qzbutton">
+    <button id="qzbutton3" class="qzbutton">
     ${userQues.c}</button>
-    <button id="qzbutton" class="${userQues.d}">
+    <button id="qzbutton4" class="qzbutton">
     ${userQues.d}</button></div>`
     console.log(answer);
     displayQuiz.innerHTML = ques;
 
-    qzbutton.addEventListener("click", function () {
-        var displayh1 = document.createElement("h1");
-        displayh1.textContent = "Incorrect";
-        answerResult.appendChild(displayh1);
-        questionThree();
-    });
-}
+    // function selection() {
+    //     let quesButton = document.querySelector('#qzbutton1');
+    //     quesButton.addEventListener("click", function () {
+    //         alert("Test");
 
+    //     });
+
+    // }
+}
 
 
 // quizButton1.addEventListener("click", function () {
